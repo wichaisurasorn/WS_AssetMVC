@@ -1,0 +1,136 @@
+﻿@{ 
+    ViewData["title"] = "เพิ่มทรัพย์สิน";
+}
+
+<h1>เพิ่มทรัพย์สิน</h1>
+
+<div class="row">
+    <div class="col-12">
+        <div class="wrapper wrapper-content">
+            <div class="ibox">
+                <div class="ibox-content">                
+                    <form>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>NANE</label>
+                                    <input type="text" id="Asset_Name" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Serail Number</label>
+                                    <input type="text" id="Asset_Serial" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <input type="text" id="Type_ID" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Date Buy</label>
+                                    <input type="text" id="Asset_Datebuy" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Date Warranty</label>
+                                    <input type="text" id="Asset_Waranty" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="text" id="Asset_Price" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label>Supply</label>
+                                    <input type="text" id="Asset_Supply" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>USER</label>
+                                    <input type="text" id="User_ID" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>ADMIN</label>
+                                    <input type="text" id="Admin_ID" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Asset NO.</label>
+                                    <input type="text" id="Asset_Number" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Date Modify</label>
+                                    <input type="text" id="Asset_Modify" class="form-control" autocomplete="off"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <br />
+                        <button type="button" onclick="datas()" class="btn btn-success">เพื่อข้อมูล</button>
+                    </form>                                 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{ 
+<script type="text/javascript">
+    function datas() {
+        var Asset_Name = $('#Asset_Name').val();
+        var Asset_Serial = $('#Asset_Serial').val();
+        var Type_ID = $('#Type_ID').val();
+        var Asset_Datebuy = $('#Asset_Datebuy').val();
+        var Asset_Waranty = $('#Asset_Waranty').val();
+        var Asset_Price = $('#Asset_Price').val();
+        var Asset_Supply = $('#Asset_Supply').val();
+        var User_ID = $('#User_ID').val();
+        var Admin_ID = $('#Admin_ID').val();
+        var Asset_Number = $('#Asset_Number').val();
+        var Asset_Modify = $('#Asset_Modify').val();
+
+        console.log(Asset_Name, Asset_Serial, Type_ID, Asset_Datebuy, Asset_Waranty, Asset_Price, Asset_Supply, User_ID, Admin_ID, Asset_Number, Asset_Modify);
+
+        $.ajax({
+            type: 'post',
+            url: '@Url.Action("Add","Assets")',
+            data: {
+                Asset_Name : Asset_Name,
+                Asset_Serial: Asset_Serial,
+                Type_ID: Type_ID,
+                Asset_Datebuy: Asset_Datebuy,
+                Asset_Waranty: Asset_Waranty,
+                Asset_Price: Asset_Price,
+                Asset_Supply: Asset_Supply,
+                User_ID: User_ID,
+                Admin_ID: Admin_ID,
+                Asset_Number: Asset_Number,
+                Asset_Modify: Asset_Modify
+            },
+            success(data) {
+                if (data == "true") {
+                    alert("success");
+                } else {
+                    alert("fial");
+                }
+            }
+        });
+    }
+
+    $(function () {
+        $('#Asset_Modify').datepicker({
+            dateFormat: "dd/mm/yy",
+            changeMonth: true,
+            changeYear: true,
+            minDate: new Date(2000, 0, 1),
+            maxDate: new Date(2024,0,1),
+            showOn: "both",
+            buttonText:"<i class='fa fa-calendar'></i>"
+
+        });
+        $("#Asset_Datebuy").datepicker();
+        $("#Asset_Waranty").datepicker();
+    })
+
+
+
+
+</script>
+}

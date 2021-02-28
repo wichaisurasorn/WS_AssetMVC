@@ -1,0 +1,76 @@
+﻿@model IEnumerable<AssetId.AssetByID>
+
+@{
+    ViewData["title"] = "แก้ไขข้อมูล";
+}
+
+
+<h1>แก้ไขรายละเอียดทรัพย์สิน</h1>
+<br />
+
+<div class="row">
+    <div class="col-12">
+        <div class="wrapper wrapper-content">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <div class="col-sm-6">
+                        <form>
+                            @foreach (var item in (IEnumerable<AssetId.AssetByID>)ViewData["data"])
+                            {
+                                <div class="form-group">
+                                    <label>@item.asset_Name</label>
+                                    <input type="text" id="Asset_Name" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label></label>
+                                    <input type="text" id="Asset_Serial" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Type</label>
+                                    <input type="text" id="Type_ID" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Date Buy</label>
+                                    <input type="date" id="Asset_Datebuy" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Date Warranty</label>
+                                    <input type="date" id="Asset_Waranty" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Price</label>
+                                    <input type="text" id="Asset_Price" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Supply</label>
+                                    <input type="text" id="Asset_Supply" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>USER</label>
+                                    <input type="text" id="User_ID" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>ADMIN</label>
+                                    <input type="text" id="Admin_ID" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Asset NO.</label>
+                                    <input type="text" id="Asset_Number" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Date Modify</label>
+                                    <input type="date" id="Asset_Modify" class="form-control" />
+                                </div>
+                                <br />
+                                <br />
+                                <button type="button" onclick="datas()" class="btn btn-success">บันทึก</button>
+                            }
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

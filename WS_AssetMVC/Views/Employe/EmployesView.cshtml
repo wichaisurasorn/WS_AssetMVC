@@ -1,0 +1,49 @@
+﻿@model WS_AssetMVC.Models.EmployeModels
+@using Newtonsoft.Json;
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Fristname</th>
+            <th>Lastname</th>
+            <th>Department</th>
+            <th>Level</th>
+            <th>Status</th>
+            <th>CreateDate</th>
+            <th>DateModify</th>
+            <th>Username</th>
+            <th>Password</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model.LEmploye)
+            {
+                var AllUser = JsonConvert.SerializeObject(item);
+
+                <tr>
+                    <td>@item.user_ID</td>
+                    <td>@item.user_Fristname</td>
+                    <td>@item.user_Lastname</td>
+                    <td>@item.user_Department</td>
+                    <td>@item.user_Level</td>
+                    <td>@item.user_Status</td>
+                    <td>@item.createDate</td>
+                    <td>@item.dateModify</td>
+                    <td>@item.user_Username</td>
+                    <td>@item.user_Password</td>
+                    <td>
+                        <button type="button" class="btn btn-primary" onclick="UserUpdate(@AllUser)" data-toggle="modal" data-target="#EditUserModal">Update</button>
+                    </td>
+                </tr>
+
+            }
+        }
+
+    </tbody>
+</table>

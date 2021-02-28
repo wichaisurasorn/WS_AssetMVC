@@ -1,0 +1,351 @@
+﻿@{
+    ViewData["Title"] = "Employe";
+}
+
+<div class="wrapper wrapper-content">
+   <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#AddUserModal">เพื่อพนักงาน</button>
+</div>
+
+<div class="modal fade" id="AddUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">เพิ่มพนักงาน</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                @*<div class="form-group">
+                                    <label>ID</label>
+                                    <input type="text" id="Adduser_ID" class="form-control" />
+                                </div>*@
+                                <div class="form-group">
+                                    <label>Fristname</label>
+                                    <input type="text" id="Adduser_Fristname" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Lastname</label>
+                                    <input type="text" id="Adduser_Lastname" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    <select id="Adduser_Department" class="form-control" ></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Level</label>
+                                    <select id="Adduser_Level" class="form-control" ></select>
+                                </div>
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <select id="Adduser_Status" class="form-control" ></select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">                                
+                                <div class="form-group">
+                                    <label>Createdate</label>
+                                    <input type="text" id="Adduser_Createdate" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Datemodify</label>
+                                    <input type="text" id="Adduser_DateModify" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" id="Adduser_Username" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="text" id="Adduser_Password" class="form-control" />
+                                </div>                                
+                            </div>
+                        </div>
+                        <div class="btn btn-primary" onclick="AddUser()">บันทึก</div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+ @*Edit User*@
+<div class="modal fade" id="EditUserModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">เพิ่มพนักงาน</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <form>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>ID</label>
+                                    <input type="text" id="Edituser_ID" class="form-control" />
+                                </div>                                        
+                                <div class="form-group">
+                                    <label>Fristname</label>
+                                    <input type="text" id="Edituser_Fristname" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Lastname</label>
+                                    <input type="text" id="Edituser_Lastname" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Department</label>
+                                    <input type="text" id="Edituser_Department" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Level</label>
+                                    <input type="text" id="Edituser_Level" class="form-control" />
+                                </div>                                
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Status</label>
+                                    <input type="text" id="Edituser_Status" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Createdate</label>
+                                    <input type="text" id="Edituser_Createdate" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Datemodify</label>
+                                    <input type="text" id="Edituser_DateModify" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Username</label>
+                                    <input type="text" id="Edituser_Username" class="form-control" />
+                                </div>
+                                <div class="form-group">
+                                    <label>Password</label>
+                                    <input type="text" id="Edituser_Password" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="btn btn-primary" onclick="EditUser()">บันทึก</div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*Show Table*@
+<div class="row">
+    <div class="col-12">
+        <div class="wrapper wrapper-content">
+            <div class="ibox">
+                <div class="ibox-content">
+                    <br />
+                    <button type="button" class="btn btn-success" onclick="sendata()">Employes</button>
+                    <br />
+                    <div id="Employe">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts{ 
+    <script type="text/javascript">
+        function sendata() {
+            console.log("ksjdfkj");
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("showEmploye","Employe")',
+                success: function (data) {
+                    $('#Employe').html(data);
+                }
+            });
+
+        }
+
+        //AddUser
+        function AddUser() {
+            //var user_ID = $('#Adduser_ID').val();
+            var user_Fristname = $('#Adduser_Fristname').val();
+            var user_Lastname = $('#Adduser_Lastname').val();
+            var user_Department = $('#Adduser_Department').val();
+            var user_Level = $('#Adduser_Level').val();
+            var user_Status = $('#Adduser_Status').val();
+            var user_Createdate = $('#Adduser_Createdate').val();
+            var user_Datemodify = $('#Adduser_DateModify').val();
+            var user_Username = $('#Adduser_Username').val();
+            var user_Password = $('#Adduser_Password').val();
+
+            console.log(/*user_ID,*/ user_Fristname, user_Lastname, user_Department, user_Level, user_Status, user_Createdate, user_Datemodify, user_Username, user_Password);
+
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("Adduser","Employe")',
+                data: {
+                    //user_ID: user_ID,
+                    user_Fristname: user_Fristname,
+                    user_Lastname: user_Lastname,
+                    user_Department: user_Department,
+                    user_Level: user_Level,
+                    user_Status: user_Status,
+                    user_Createdate: user_Createdate,
+                    user_Datemodify: user_Datemodify,
+                    user_Username: user_Username,
+                    user_Password: user_Password
+                },
+                success:function (data) {
+                    if (data == "true") {
+                        alert("success");
+                    } else {
+                        alert("fail");
+                    }
+                }
+            });
+        }
+        //DATE Picker START
+
+        $(function () {
+            $('#Adduser_Createdate').datepicker({
+                dateFormat: "mm/dd/yy",
+                changeMonth: true,
+                changeYear: true,
+                minDate: new Date(2000, 0, 0),
+                maxDate: new Date(2024, 0, 0)
+            }).datepicker("setDate", new Date());
+
+            $('#Adduser_DateModify').datepicker({
+                dateFormat: "mm/dd/yy"
+            }).datepicker("setDate", new Date());
+        });
+
+        //DATA Picker END
+
+        //Edit User
+        function UserUpdate(data) {
+            $('#Edituser_ID').val(data.user_ID);
+            $('#Edituser_Fristname').val(data.user_Fristname);
+            $('#Edituser_Lastname').val(data.user_Lastname);
+            $('#Edituser_Department').val(data.user_Department);
+            $('#Edituser_Level').val(data.user_Level);
+            $('#Edituser_Status').val(data.user_Status);
+            $('#Edituser_Createdate').val(data.createDate);
+            $('#Edituser_DateModify').val(data.dateModify);
+            $('#Edituser_Username').val(data.user_Username);
+            $('#Edituser_Password').val(data.user_Password);
+        }
+        function EditUser() {
+            console.log("sdfasfas");
+            var user_ID = $('#Edituser_ID').val();
+            var user_Fristname = $('#Edituser_Fristname').val();
+            var user_Lastname = $('#Edituser_Lastname').val();
+            var user_Department = $('#Edituser_Department').val();
+            var user_Level = $('#Edituser_Level').val();
+            var user_Status = $('#Edituser_Status').val();
+            var user_Createdate = $('#Edituser_Createdate').val();
+            var user_Datemodify = $('#Edituser_DateModify').val();
+            var user_Username = $('#Edituser_Username').val();
+            var user_Password = $('#Edituser_Password').val();
+
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("UpdateUser", "Employe")',
+                data: {
+                    user_ID1: user_ID,
+                    user_Fristname: user_Fristname,
+                    user_Lastname: user_Lastname,
+                    user_Department: user_Department,
+                    user_Level: user_Level,
+                    user_Status: user_Status,
+                    user_Createdate: user_Createdate,
+                    user_Datemodify: user_Datemodify,
+                    user_Username: user_Username,
+                    user_Password: user_Password
+                },
+                success: function (data) {
+                    if (data == "true") {
+                        alert("success");
+                    } else {
+                        alert("fail");
+                    }
+                }
+            });
+        }
+
+        //list Dropdown START 
+        
+        $('#Adduser_Department').ready(function () {
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("KKKK", "Employe")',
+                success: function (status) {
+                    console.log("status", status);
+                    var isf = status.depart.length;
+                    //console.log("status", isf);
+                    var s = '<option value="-1">Select a Department</option>';
+                    for (var i = 0; i < isf; i++) {
+                        s += '<option value="' + status.depart[i].id + '">' + status.depart[i].department + '</option>';
+                    }
+                    $("#Adduser_Department").html(s);
+                }
+
+            });
+        });
+
+        $('#Adduser_Level').ready(function () {
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("LLLL","Employe")',
+                success: function (status) {
+                    console.log("status", status);
+                    var isf = status.level.length;
+                    var f = '<option value="-1">--select level--</option>';
+                    for (var i = 0; i < isf; i++) {
+                        f += '<option value="' + status.level[i].id + '">' + status.level[i].level + '</option>';
+                    }
+                    $('#Adduser_Level').html(f);
+                }
+            });
+        });
+                
+        $('#Adduser_Status').ready(function () {
+            console.log("kjdfkajf");
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("statusss", "Employe")',
+                success: function (status) {
+                    console.log("status", status);
+                    var isf = status.sta.length;
+                    var f = '<option value="-1">--select Status--</option>';
+                    for (var i = 0; i < isf; i++) {
+                        f += '<option value="' + status.sta[i].id + '">' + status.sta[i].level + '</option>';
+                    }
+                    $('#Adduser_Status').html(f);
+                }
+            });
+        });
+
+        //Dropdown List END
+
+
+
+
+
+    </script>
+}

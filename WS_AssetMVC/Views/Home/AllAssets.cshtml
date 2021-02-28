@@ -1,0 +1,42 @@
+﻿@model WS_AssetMVC.Models.AssetsModel
+
+@using Newtonsoft.Json;
+
+
+
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Serial</th>
+            <th scope="col">Number</th>
+            <th scope="col">Datebuy</th>
+            <th scope="col">User</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model.LAssets)
+            {
+                var AllData = JsonConvert.SerializeObject(item);
+                <tr>
+                    <th scope="row">@item.asset_ID</th>
+                    <td>@item.asset_Name</td>
+                    <td>@item.asset_Serial</td>
+                    <td>@item.asset_Number</td>
+                    <td>@item.asset_Datebuy</td>
+                    <td>@item.User_ID</td>
+                    <td>
+                        @*<button type="button" class="btn btn-success" onclick="detaildata(@item.asset_ID)" data-toggle="modal" data-target="#DetailModal">Update</button>*@
+                        <button type="button" class="btn btn-success" onclick="detailasset(@AllData)" data-toggle="modal" data-target="#DetailModal">Detail</button>
+                    </td>
+                </tr>
+            }
+        }
+
+    </tbody>
+</table>

@@ -1,0 +1,87 @@
+﻿@model WS_AssetMVC.Models.AssetId
+@using Newtonsoft.Json;
+
+
+
+
+
+<div class="row">
+    <div class="col-12">
+        <div class="wrapper wrapper-content">
+            <div class="ibox">
+                <div class="ibox-content">
+
+                    <form>
+                        @if (Model != null)
+                        {
+                            foreach (var item in Model.LAssetById)
+                            {
+                                var AllDetail = JsonConvert.SerializeObject(item);
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>ID</label>
+                                            <input type="text" id="Detail_ID" class="form-control" value="@item.asset_ID" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>NANE</label>
+                                            <input type="text" id="Detail_Name" class="form-control" value="@item.asset_Name" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Serail Number</label>
+                                            <input type="text" id="Detail_Serial" class="form-control" value="@item.asset_Serial" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Type</label>
+                                            <input type="text" id="Type_ID" class="form-control" value="@item.type_ID" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date Buy</label>
+                                            <input type="text" id="Detail_Datebuy" class="form-control" value="@item.asset_Datebuy" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date Warranty</label>
+                                            <input type="text" id="Detail_Waranty" class="form-control" value="@item.asset_Waranty" />
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Price</label>
+                                            <input type="text" id="Detail_Price" class="form-control" value="@item.asset_Price" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Supply</label>
+                                            <input type="text" id="Detail_Supply" class="form-control" value="@item.asset_Supply" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>USER</label>
+                                            <input type="text" id="User_ID" class="form-control" value="@item.user_ID" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>ADMIN</label>
+                                            <input type="text" id="Admin_ID" class="form-control" value="@item.admin_ID" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Asset NO.</label>
+                                            <input type="text" id="Detail_Number" class="form-control" value="@item.asset_Number" />
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Date Modify</label>
+                                            <input type="text" id="Detail_Modify" class="form-control" value="@item.asset_Modify" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-success" onclick="EditAsset()">แก้ไข</button>
+                                <button class="btn btn-success" onclick="DetailEdit(@AllDetail)">แก้ไขรายละเอียด</button>
+
+                            }
+                        }
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,43 @@
+﻿@model WS_AssetMVC.Models.UploadForm.Allemploye
+@using Newtonsoft.Json;
+
+<h2>ตารางพนักงาน</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Department</th>
+            <th>Filesimage</th>
+            <th>Image</th>
+            <th>Detail</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model.LEmploye)
+            {
+                var Employes = JsonConvert.SerializeObject(item);
+
+        <tr>
+            <td>@item.id</td>
+            <td>@item.firstname</td>
+            <td>@item.lastname</td>
+            <td>@item.department</td>
+            <td>@item.filename</td>
+            @*<td><img src="~/UploadFiles/@item.filename" height="80px" /></td>*@
+            <td><img src="@item.filepath" height="80px" /></td>
+
+            <td>
+                <button id="Update" class="btn btn-success" onclick="Update(@Employes)">Update</button>
+                <button id="Delete" class="btn btn-primary">Delete</button>
+            </td>
+        </tr>
+
+
+            }
+        }
+    </tbody>
+</table>

@@ -1,0 +1,162 @@
+﻿@{
+    Layout = null;
+}
+
+<html>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>INSPINIA | Login 2</title>
+
+    @*<link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="font-awesome/css/font-awesome.css" rel="stylesheet">*@
+    <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet">
+
+
+    @*<link href="css/animate.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">*@
+    <link href="~/css/animate.css" rel="stylesheet">
+    <link href="~/css/style.css" rel="stylesheet">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+
+
+
+</head>
+
+<body class="gray-bg">
+
+    <div class="loginColumns animated fadeInDown">
+        <div class="row">
+
+            <div class="col-md-6">
+                <h2 class="font-bold">Welcome to IN+</h2>
+
+                <p>
+                    Perfectly designed and precisely prepared admin theme with over 50 pages with extra new web app views.
+                </p>
+
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                </p>
+
+                <p>
+                    When an unknown printer took a galley of type and scrambled it to make a type specimen book.
+                </p>
+
+                <p>
+                    <small>It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</small>
+                </p>
+
+            </div>
+            <div class="col-md-6">
+                <div class="ibox-content">
+                    <div class="m-t" role="form">
+                        <div class="form-group">
+                            <input id="username" type="text" class="form-control" placeholder="Username">
+                        </div>
+                        <div class="form-group">
+                            <input id="password" type="password" class="form-control" placeholder="Password">
+                        </div>
+                        <button onclick="Login()" type="submit" class="btn btn-primary block full-width m-b">Login</button>
+
+                        <a href="#">
+                            <small>Forgot password?</small>
+                        </a>
+
+                        <p class="text-muted text-center">
+                            <small>Do not have an account?</small>
+                        </p>
+                        <a class="btn btn-sm btn-white btn-block" href="register.html">Create an account</a>
+                    </div>
+                    <p class="m-t">
+                        <small>Inspinia we app framework base on Bootstrap 3 © 2014</small>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div class="row">
+            <div class="col-md-6">
+                Copyright Example Company
+            </div>
+            <div class="col-md-6 text-right">
+                <small>© 2014-2015</small>
+            </div>
+        </div>
+    </div>
+
+
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+
+
+
+
+    function Login() {
+        //var username = $('#username').val();
+        //var password = $('#password').val();
+        //console.log(username, password)
+        var formdata = new FormData();
+        formdata.append("username", $('#username').val());
+        formdata.append("password", $('#password').val());
+
+        console.log("formdata", formdata);
+        $.ajax({
+            url: '@Url.Action("ValidateUser", "Login")',
+            type: "POST",
+            data: formdata,
+            processData: false,
+            contentType: false,
+           // dataType: "json",
+           // contentType: "application/json",
+            success: function (status) {
+                console.log("status", status.isSuccess);
+                if (status.isSuccess) {
+                    window.location.href = status.redirectToUrl;
+                } else {
+                    alert(status.isSuccess);
+                }
+                //$("#message").html(status.Message);
+                //if (status.Success) {
+                //    window.location.href = status.TargetURL;
+                //}
+            }
+        });
+    }
+
+
+        @*function Login() {
+            var username = $('#username').val();
+            var password = $('#password').val();
+            //console.log(username, password)
+            $.ajax({
+                type: 'post',
+                url: '@Url.Action("Loginuser", "Login")',
+                data: {
+                    username: username,
+                    password: password
+                },
+                seccess: function (data) {
+                    console.log("data", data);
+                    //window.location.href = data.redirectToUrl;
+                    //if (data == "true") {
+                    //    alert("success");
+                    //    return RedirectToAction("Index", "Home");
+                    //} else {
+                    //    alert("fail");
+                    //}
+                }
+            });
+        }*@
+
+
+</script>
